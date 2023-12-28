@@ -59,20 +59,18 @@ let darkMode = false;
 
 function toggleOptions() {
   let options = document.querySelector('.options');
-  if (!optionsHidden) {
-    document.querySelector('.toggleOptionsButton').innerHTML = 'Show filters';
-    options.style.display = 'none';
-    //options.style.width = '0px';
-    //options.style.height = '0px';
-    //options.style.gap = '10px';
-    optionsHidden = true;
-  } else {
-    document.querySelector('.toggleOptionsButton').innerHTML = 'Hide filters';
-    options.style.display = 'grid';
-    //options.style.width = '450px';
-    //options.style.height = '100%';
-    //options.style.gap = '10px';
+  let toggleButton = document.querySelector('.toggleOptionsButton');
+
+  if (optionsHidden) {
+    toggleButton.innerHTML = 'Hide filters';
+    options.classList.remove('hidden');
+    options.classList.add('shown');
     optionsHidden = false;
+  } else {
+    toggleButton.innerHTML = 'Show filters';
+    options.classList.remove('shown');
+    options.classList.add('hidden');
+    optionsHidden = true;
   }
 }
 
@@ -815,7 +813,7 @@ function decodeQuery(queryString = window.location.search.slice(1)) {
 /** 
  * Preloads images in the filtered character data and converts to base64 representation.
 */
-function preloadImages() {
+async function preloadImages() {
   const totalLength = characterDataToSort.length;
   let imagesLoaded = 0;
 
@@ -832,9 +830,20 @@ function preloadImages() {
     });
   };
 
-  return Promise.all(characterDataToSort.map(async (char, idx) => {
-    characterDataToSort[idx].img = await loadImage(imageRoot + char.img);
-  }));
+  const imageCache = {}; // To cache loaded images
+
+  const loadImageAndCache = async (char, idx) => {
+    if (imageCache[char.img]) {
+      characterDataToSort[idx].img = imageCache[char.img];
+    } else {
+      const imageData = await loadImage(imageRoot + char.img);
+      characterDataToSort[idx].img = imageData;
+      imageCache[char.img] = imageData; // Cache the image
+    }
+  };
+
+  // Load images concurrently
+  await Promise.all(characterDataToSort.map(loadImageAndCache));
 }
 
 /**

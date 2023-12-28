@@ -87,7 +87,7 @@ body {
   position: absolute;
   width: 492px;
   color: black !important;
-  margin: 3px 0px;
+  margin: .4em 0px;
   text-align: center;
   font-size: 0.7em;
 }
@@ -192,7 +192,7 @@ body {
 
 .sorter>.text>p {
   margin: 0.5em 5px 0px;
-  width: calc(100%-10px);
+  width: calc(100% - 10px);
   text-align: center;
   font-size: 0.8em;
   line-height: 1.5em;
@@ -362,4 +362,12 @@ a:visited {
 
 a:visited.dark {
   color: #4cf200 !important;
+}
+
+.hidden {
+  display: none;
+}
+
+.shown {
+  display: grid;
 }
