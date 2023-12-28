@@ -1,110 +1,126 @@
 <html>
 
 <head>
-  <link rel="shortcut icon" href="src/assets/weezy.ico" type="image/x-icon">
-  <link rel="icon" href="src/assets/weezy.ico" type="image/x-icon">
-  <meta charset="utf-8">
-  <meta name="og:site_name" content="Weezer Song Sorting">
-  <meta name="og:description" content="A simple website for sorting Weezer songs in a formatted list.">
-  <meta name="og:image" content="https://styles.redditmedia.com/t5_2s48r/styles/mobileBannerImage_drl6dtvgh1x71.png">
-  <title>Weezer Song Sorter</title>
+    <title>Weezer Song Sorter</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We sell ourselves for petty change, and when we die we rearrange">
+    <meta name="keywords" content="weezer, song, sorter, weezer sorter">
+    <link rel="shortcut icon" href="src/assets/weezy.ico" type="image/x-icon">
+    <link rel="icon" href="src/assets/weezy.ico" type="image/x-icon">
 
-  <link rel="stylesheet" type="text/css" href="src/css/reset.css">
-  <link rel="stylesheet" type="text/css" href="src/css/styles.css">
+    <meta name="og:site_name" content="Weezer Song Sorter">
+    <meta name="og:description" content="A simple website for sorting Weezer songs in a formatted list.">
+    <meta name="og:image" content="https://styles.redditmedia.com/t5_2s48r/styles/mobileBannerImage_drl6dtvgh1x71.png">
 
-  <script src="src/js/data.js"></script>
-  <script src="src/js/data/2022-10-04.js"></script>
-  <script src="src/js/data/2022-10-25.js"></script>
-  <script src="src/js/data/2023-01-01.js"></script>
-  <script src="src/js/html2canvas.min.js"></script>
-  <script src="src/js/lz-string.min.js"></script>
-  <script src="src/js/seedrandom.min.js"></script>
-  <script src="src/js/main.js"></script>
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Weezer Song Sorter">
+    <meta name="twitter:description" content="A simple website for sorting Weezer songs in a formatted list.">
+    <meta name="twitter:image" content="https://styles.redditmedia.com/t5_2s48r/styles/mobileBannerImage_drl6dtvgh1x71.png">
+
+    <link rel="stylesheet" type="text/css" href="src/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="src/css/styles.css">
+
+    <script src="src/js/data.js"></script>
+    <script src="src/js/data/2023-01-01.js"></script>
+    <script src="src/js/html2canvas.min.js"></script>
+    <script src="src/js/lz-string.min.js"></script>
+    <script src="src/js/seedrandom.min.js"></script>
+    <script src="src/js/main.js"></script>
 </head>
 
 <body>
-<div id="darkModeButton">
-<img class="feedback" title="Switch Dark/Light Mode" src="src/assets/lightmode.png">
-</div>
-<div class="container">
-    <div class="progress">
-        <span class="progressbattle"></span>
-        <div class="progressbar">
-            <div class="progressfill"><span class="progresstext"></span></div>
+    <div id="darkModeButton">
+        <img class="feedback" title="Switch Dark/Light Mode" src="src/assets/lightmode.png">
+    </div>
+    <div class="container">
+        <div class="progress">
+            <span class="progressbattle"></span>
+            <div class="progressbar">
+                <div class="progressfill"><span class="progresstext"></span></div>
+            </div>
+        </div>
+
+        <div class="sorter">
+            <img src="src/assets/defaultL.png" class="left sort image">
+
+            <div class="starting start button">Weezer Song Sorter<br><br>Click to Start!</div>
+            <div class="starting load button">Load <span></span></div>
+
+            <div class="loading button">
+                <div></div><span>Loading...</span>
+            </div>
+
+            <div class="sorting tie button">Tie</div>
+            <div class="sorting undo button">Undo</div>
+            <div class="sorting save button">Save Progress</div>
+
+            <div class="finished save button">Generate Result URL</div>
+            <div class="finished getimg button">Generate Image</div>
+            <div class="finished list button">Generate Text List</div>
+
+            <img src="src/assets/defaultR.jpg" class="right sort image">
+
+            <div class="left sort text">
+                <p></p>
+            </div>
+            <div class="right sort text">
+                <p></p>
+            </div>
+        </div>
+        <button class="toggleOptionsButton">Show filters</button>
+        <div class="options"></div>
+        <div class="image selector">Display Images on Result: </div>
+        <div class="time taken"></div>
+        <div class="results"></div>
+
+        <div class="info">
+            <h3>Description</h3>
+            <div style="padding: 2px;"></div>
+            <p>Sorter for Weezer songs. Pick your albums, and hit the Start button.</p>
+            <p>Click on the song you like better from the two, or tie them if you like them equally or don't know them.
+            </p>
+            <p>Depending on how many albums you pick, you'll get up to 700+ picks, so if you need a break, you can save
+                your progress for another time. </p>
+
+            <br>
+
+            <div class="controls" style="width: 300px; margin: 0 auto;">
+                <h3>Controls</h3>
+                <div class="row">
+                    <div class="column">
+                        <h4>Before sorting</h4>
+                        S/Enter: Start sorting
+                        <br>
+                        L: Load progress
+                    </div>
+                    <div class="column">
+                        <h4>During sorting</h4>
+                        H/Left Arrow: Pick left
+                        <br>
+                        L/Right Arrow: Pick right
+                        <br>
+                        K/Up Arrow: Tie
+                        <br>
+                        J/Down Arrow: Undo
+                        <br>
+                        S: Save progress
+                    </div>
+                </div>
+            </div>
+
+
+            <br><br>
+            <h3>Changelog</h3>
+            <p>January 1st, 2023 - Added SZNZ: Winter. </p>
+            <p>October 25th, 2022 - Removed the SZNZ B-sides for now. </p>
+            <p>October 4th, 2022 - Added SZNZ: Summer, SZNZ: Autumn. Added dark mode and show/hide filters button.</p>
+
+            <br>
+            <a target="_blank" href="https://weezersorter.tumblr.com"> Original Weezer Sorter </a> | <a
+                href="https://github.com/execfera/charasort/">Source Code</a> | <a class="clearsave">Clear Save Data</a>
         </div>
     </div>
-
-    <div class="sorter">
-        <img src="src/assets/defaultL.png" class="left sort image">
-
-        <div class="starting start button">Weezer Song Sorter<br><br>Click to Start!</div>
-        <div class="starting load button">Load <span></span></div>
-
-        <div class="loading button"><div></div><span>Loading...</span></div>
-
-        <div class="sorting tie button">Tie</div>
-        <div class="sorting undo button">Undo</div>
-        <div class="sorting save button">Save Progress</div>
-
-        <div class="finished save button">Generate Result URL</div>
-        <div class="finished getimg button">Generate Image</div>
-        <div class="finished list button">Generate Text List</div>
-
-        <img src="src/assets/defaultR.jpg" class="right sort image">
-
-        <div class="left sort text"><p></p></div>
-        <div class="right sort text"><p></p></div>
-    </div>
-	<button class="toggleOptionsButton">Show filters</button>
-    <div class="options"></div>
-    <div class="image selector">Display Images on Result: </div>
-    <div class="time taken"></div>
-    <div class="results"></div>
-
-    <div class="info">
-		<h3>Description</h3>
-		<div style="padding: 2px;"></div>
-        <p>Sorter for Weezer songs. Pick your albums, and hit the Start button.</p>
-        <p>Click on the song you like better from the two, or tie them if you like them equally or don't know them.</p>
-        <p>Depending on how many albums you pick, you'll get up to 700+ picks, so if you need a break, you can save your progress for another time. </p>
-
-        <br>
-		
-		<div class="controls" style="width: 300px; margin: 0 auto;">
-			<h3>Controls</h3>
-			<div class="row">
-			<div class="column">
-				<h4>Before sorting</h4>
-				S/Enter: Start sorting
-				<br>
-				L: Load progress
-			</div>
-			<div class="column">
-				<h4>During sorting</h4>
-				H/Left Arrow: Pick left
-				<br>
-				L/Right Arrow: Pick right
-				<br>
-				K/Up Arrow: Tie
-				<br>
-				J/Down Arrow: Undo
-				<br>
-				S: Save progress
-			</div>
-		</div>
-		</div>
-		
-
-        <br><br>
-		<h3>Changelog</h3>
-		<p>January 1st, 2023 - Added SZNZ: Winter. </p>
-		<p>October 25th, 2022 - Removed the SZNZ B-sides for now. </p>
-        <p>October 4th, 2022 - Added SZNZ: Summer, SZNZ: Autumn. Added dark mode and show/hide filters button.</p>
-		
-		<br>
-		<a target="_blank" href="https://weezersorter.tumblr.com"> Original Weezer Sorter </a> | <a href="https://github.com/execfera/charasort/">Source Code</a> | <a class="clearsave">Clear Save Data</a>
-    </div>
-</div>
 </body>
 
 </html>
