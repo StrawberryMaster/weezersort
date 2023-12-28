@@ -1,59 +1,59 @@
 h3 {
-	font-size: 19px;
-	font-weight: 600;
-	padding-bottom: 5px;
+  font-size: 19px;
+  font-weight: 600;
+  padding-bottom: 5px;
 }
 
 h4 {
-	font-size: 16px;
-	font-weight: 400;
-	padding-top: 5px;
-	padding-bottom: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  padding-top: 5px;
+  padding-bottom: 8px;
 }
 
 .toggleOptionsButton {
-	margin-top: 5px;
-	padding: 5px;
-	width: 170px;
-	height: 40px;
-	border: 1px solid black;
-	text-align: center;
-	background-color: white;
+  margin-top: 5px;
+  padding: 5px;
+  width: 170px;
+  height: 40px;
+  border: 1px solid black;
+  text-align: center;
+  background-color: white;
 }
 
 .column {
-	float: left;
-	width: 50%;
+  float: left;
+  width: 50%;
 }
 
 .row:after {
-	content: "";
-	display: table;
-	clear: both;
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .dark {
-	background-color: black !important;
-	color: white !important;
-	border-color: white !important;
+  background-color: black !important;
+  color: white !important;
+  border-color: white !important;
 }
 
 #darkModeButton {
-	position: fixed;
-	bottom: 10px;
-	right: -130px;
+  position: fixed;
+  bottom: 10px;
+  right: -130px;
 }
 
 .feedback {
-	width: 30%;
-	height: 30%;
-	border: 1px solid black;
-	position: relative;
-	border-radius: 50%;
+  width: 30%;
+  height: 30%;
+  border: 1px solid black;
+  position: relative;
+  border-radius: 50%;
 }
 
 .feedback:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 body {
@@ -123,7 +123,8 @@ body {
   display: none;
 }
 
-.sorting.button, .finished.button {
+.sorting.button,
+.finished.button {
   grid-row: span 2;
   display: none;
 }
@@ -133,26 +134,29 @@ body {
   display: none;
 }
 
-.loading.button > div {
+.loading.button>div {
   width: 25px;
   height: 25px;
   margin: 50px auto;
   background-color: #333;
 
-  border-radius: 100%;  
+  border-radius: 100%;
   -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
   animation: sk-scaleout 1.0s infinite ease-in-out;
 }
 
 /* Animation taken from: http://tobiasahlin.com/spinkit/ */
 
-.loading.button > span {
+.loading.button>span {
   margin: auto auto 20%;
   font-size: 0.7em;
 }
 
 @-webkit-keyframes sk-scaleout {
-  0% { -webkit-transform: scale(0) }
+  0% {
+    -webkit-transform: scale(0)
+  }
+
   100% {
     -webkit-transform: scale(1.0);
     opacity: 0;
@@ -160,17 +164,19 @@ body {
 }
 
 @keyframes sk-scaleout {
-  0% { 
+  0% {
     -webkit-transform: scale(0);
     transform: scale(0);
-  } 100% {
+  }
+
+  100% {
     -webkit-transform: scale(1.0);
     transform: scale(1.0);
     opacity: 0;
   }
 }
 
-.sorter > .image {
+.sorter>.image {
   width: 120px;
   height: 180px;
   margin: auto;
@@ -178,13 +184,13 @@ body {
   cursor: pointer;
 }
 
-.sorter > .text {
+.sorter>.text {
   width: 120px;
   height: 60px;
   display: none;
 }
 
-.sorter > .text > p {
+.sorter>.text>p {
   margin: 0.5em 5px 0px;
   width: calc(100%-10px);
   text-align: center;
@@ -192,12 +198,12 @@ body {
   line-height: 1.5em;
 }
 
-.sorter > .left {
+.sorter>.left {
   grid-column: 1 / 2;
   border: 1px solid #000000;
 }
 
-.sorter > .right {
+.sorter>.right {
   grid-column: 3 / 4;
   border: 1px solid #000000;
 }
@@ -211,7 +217,7 @@ body {
   width: 450px;
 }
 
-.options > div {
+.options>div {
   font-size: 0.5625em;
 }
 
@@ -223,7 +229,8 @@ label:hover {
   color: #990000;
 }
 
-.options > .large.option, .options > hr {
+.options>.large.option,
+.options>hr {
   grid-column: span 3;
   text-align: center;
   width: 100%;
@@ -295,7 +302,7 @@ label:hover {
   color: #FFF;
 }
 
-.result > .left {
+.result>.left {
   width: 35px;
   padding: 1px 3px 1px 0.5em;
   grid-column: 1 / 2;
@@ -306,14 +313,14 @@ label:hover {
   position: relative;
 }
 
-.result.image > .left span {
+.result.image>.left span {
   position: absolute;
   top: 50%;
   right: 3px;
   margin-top: -0.375em;
 }
 
-.result > .right {
+.result>.right {
   width: 160px;
   padding: 1px 0em 1px 0em;
   grid-column: 2 / 3;
@@ -337,10 +344,22 @@ a {
   cursor: pointer;
 }
 
+a.dark {
+  color: #ffcb00 !important;
+}
+
 a:hover {
   color: #FF6600;
 }
 
+a.dark:hover {
+  color: #f00 !important;
+}
+
 a:visited {
   color: #6600FF;
+}
+
+a:visited.dark {
+  color: #4cf200 !important;
 }
