@@ -25,9 +25,9 @@ dataSet[dataSetVersion].options = [
       { name: "OK Human", key: "okh" },
       { name: "Van Weezer", key: "vw" },
       { name: "SZNZ: Spring", key: "sznz1" },
-	  { name: "SZNZ: Summer", key: "sznz2" },
-	  { name: "SZNZ: Autumn", key: "sznz3" },
-	  { name: "SZNZ: Winter", key: "sznz4" }
+      { name: "SZNZ: Summer", key: "sznz2" },
+      { name: "SZNZ: Autumn", key: "sznz3" },
+      { name: "SZNZ: Winter", key: "sznz4" }
     ]
   },
   {
@@ -535,84 +535,84 @@ dataSet[dataSetVersion].characterData = [
     name: "Beverly Hills",
     img: "AqSclv6.png",
     opts: {
-      album: [ "mb" ]
+      album: ["mb"]
     }
   },
   {
     name: "Perfect Situation",
     img: "AqSclv6.png",
     opts: {
-      album: [ "mb" ]
+      album: ["mb"]
     }
   },
   {
     name: "This Is Such A Pity",
     img: "AqSclv6.png",
     opts: {
-      album: [ "mb" ]
+      album: ["mb"]
     }
   },
   {
     name: "Hold Me",
     img: "AqSclv6.png",
     opts: {
-      album: [ "mb" ]
+      album: ["mb"]
     }
   },
   {
     name: "Peace",
     img: "AqSclv6.png",
     opts: {
-      album: [ "mb" ]
+      album: ["mb"]
     }
   },
   {
     name: "We Are All on Drugs",
     img: "AqSclv6.png",
     opts: {
-      album: [ "mb" ]
+      album: ["mb"]
     }
   },
   {
     name: "The Damage in Your Heart",
     img: "AqSclv6.png",
     opts: {
-      album: [ "mb" ]
+      album: ["mb"]
     }
   },
   {
     name: "Pardon Me",
     img: "AqSclv6.png",
     opts: {
-      album: [ "mb" ]
+      album: ["mb"]
     }
   },
   {
     name: "My Best Friend",
     img: "AqSclv6.png",
     opts: {
-      album: [ "mb" ]
+      album: ["mb"]
     }
   },
   {
     name: "The Other Way",
     img: "AqSclv6.png",
     opts: {
-      album: [ "mb" ]
+      album: ["mb"]
     }
   },
   {
     name: "Freak Me Out",
     img: "AqSclv6.png",
     opts: {
-      album: [ "mb" ]
+      album: ["mb"]
     }
   },
   {
     name: "Haunt You Every Day",
     img: "AqSclv6.png",
     opts: {
-      album: [ "mb" ]
+      album: ["mb"]
     }
   },
   {
@@ -1470,77 +1470,77 @@ dataSet[dataSetVersion].characterData = [
       album: ["okh"]
     }
   },
-    {
+  {
     name: "Hero",
     img: "sNtb2ja.png",
     opts: {
       album: ["vw"]
     }
   },
-      {
+  {
     name: "All the Good Ones",
     img: "sNtb2ja.png",
     opts: {
       album: ["vw"]
     }
   },
-      {
+  {
     name: "The End of the Game",
     img: "sNtb2ja.png",
     opts: {
       album: ["vw"]
     }
   },
-      {
+  {
     name: "I Need Some of That",
     img: "sNtb2ja.png",
     opts: {
       album: ["vw"]
     }
   },
-      {
+  {
     name: "Beginning of the End",
     img: "sNtb2ja.png",
     opts: {
       album: ["vw"]
     }
   },
-      {
+  {
     name: "Blue Dream",
     img: "sNtb2ja.png",
     opts: {
       album: ["vw"]
     }
   },
-      {
+  {
     name: "1 More Hit",
     img: "sNtb2ja.png",
     opts: {
       album: ["vw"]
     }
   },
-      {
+  {
     name: "Sheila Can Do It",
     img: "sNtb2ja.png",
     opts: {
       album: ["vw"]
     }
   },
-      {
+  {
     name: "She Needs Me",
     img: "sNtb2ja.png",
     opts: {
       album: ["vw"]
     }
   },
-      {
+  {
     name: "Precious Metal Girl",
     img: "sNtb2ja.png",
     opts: {
       album: ["vw"]
     }
   },
-      {
+  {
     name: "I've Thrown It All Away",
     img: "sNtb2ja.png",
     opts: {
@@ -1548,7 +1548,7 @@ dataSet[dataSetVersion].characterData = [
       bside: true
     }
   },
-      {
+  {
     name: "Tell Me What You Want",
     img: "sNtb2ja.png",
     opts: {
@@ -1556,49 +1556,49 @@ dataSet[dataSetVersion].characterData = [
       bside: true
     }
   },
-      {
+  {
     name: "Opening Night",
     img: "s7HT4DQ.png",
     opts: {
       album: ["sznz1"]
     }
   },
-      {
+  {
     name: "Angels on Vacation",
     img: "s7HT4DQ.png",
     opts: {
       album: ["sznz1"]
     }
   },
-      {
+  {
     name: "A Little Bit of Love",
     img: "s7HT4DQ.png",
     opts: {
       album: ["sznz1"]
     }
   },
-      {
+  {
     name: "The Garden of Eden",
     img: "s7HT4DQ.png",
     opts: {
       album: ["sznz1"]
     }
   },
-      {
+  {
     name: "The Sound of Drums",
     img: "s7HT4DQ.png",
     opts: {
       album: ["sznz1"]
     }
   },
-      {
+  {
     name: "All This Love",
     img: "s7HT4DQ.png",
     opts: {
       album: ["sznz1"]
     }
   },
-      {
+  {
     name: "Wild at Heart",
     img: "s7HT4DQ.png",
     opts: {
@@ -1613,54 +1613,54 @@ dataSet[dataSetVersion].characterData = [
       bside: true
     }
   },*/
-      {
+  {
     name: "Lawn Chair",
     img: "IBEfOwK.png",
     opts: {
       album: ["sznz2"]
-	}
+    }
   },
-	  {
+  {
     name: "Records",
     img: "IBEfOwK.png",
     opts: {
       album: ["sznz2"]
-	}
+    }
   },
-	  {
+  {
     name: "Blue Like Jazz",
     img: "IBEfOwK.png",
     opts: {
       album: ["sznz2"]
-	}
+    }
   },
-	  {
+  {
     name: "The Opposite of Me",
     img: "IBEfOwK.png",
     opts: {
       album: ["sznz2"]
-	}
+    }
   },
-      {
+  {
     name: "What's the Good of Being Good",
     img: "IBEfOwK.png",
     opts: {
       album: ["sznz2"]
-	}
+    }
   },
-      {
+  {
     name: "Cuomoville",
     img: "IBEfOwK.png",
     opts: {
       album: ["sznz2"]
-	}
+    }
   },
-      {
+  {
     name: "Thank You and Good Night",
     img: "IBEfOwK.png",
     opts: {
       album: ["sznz2"]
-	}
+    }
   },/*
       {
     name: "Portia",
@@ -1670,54 +1670,54 @@ dataSet[dataSetVersion].characterData = [
 	  bside: true
 	}
   },*/
-      {
+  {
     name: "Can't Dance, Don't Ask Me",
     img: "6InreTr.png",
     opts: {
       album: ["sznz3"]
-	}
+    }
   },
-      {
+  {
     name: "Get Off on the Pain",
     img: "6InreTr.png",
     opts: {
       album: ["sznz3"]
-	}
+    }
   },
-      {
+  {
     name: "What Happens After You?",
     img: "6InreTr.png",
     opts: {
       album: ["sznz3"]
-	}
+    }
   },
-      {
+  {
     name: "Francesca",
     img: "6InreTr.png",
     opts: {
       album: ["sznz3"]
-	}
+    }
   },
-      {
+  {
     name: "Should She Stay or Should She Go",
     img: "6InreTr.png",
     opts: {
       album: ["sznz3"]
-	}
+    }
   },
-      {
+  {
     name: "Tastes Like Pain",
     img: "6InreTr.png",
     opts: {
       album: ["sznz3"]
-	}
+    }
   },
-      {
+  {
     name: "Run, Raven, Run",
     img: "6InreTr.png",
     opts: {
       album: ["sznz3"]
-	}
+    }
   },/*,
       {
     name: "The Way I Hate You",
@@ -1727,54 +1727,54 @@ dataSet[dataSetVersion].characterData = [
 	  bside: true
 	}
   }*/
-      {
+  {
     name: "I Want a Dog",
     img: "s9OA2wW.png",
     opts: {
       album: ["sznz4"]
-	}
+    }
   },
-      {
+  {
     name: "Iambic Pentameter",
     img: "s9OA2wW.png",
     opts: {
       album: ["sznz4"]
-	}
+    }
   },
-      {
+  {
     name: "Basketball",
     img: "s9OA2wW.png",
     opts: {
       album: ["sznz4"]
-	}
+    }
   },
-      {
+  {
     name: "Sheraton Commander",
     img: "s9OA2wW.png",
     opts: {
       album: ["sznz4"]
-	}
+    }
   },
-      {
+  {
     name: "Dark Enough to See the Stars",
     img: "s9OA2wW.png",
     opts: {
       album: ["sznz4"]
-	}
+    }
   },
-      {
+  {
     name: "The One That Got Away",
     img: "s9OA2wW.png",
     opts: {
       album: ["sznz4"]
-	}
+    }
   },
-      {
+  {
     name: "The Deep and Dreamless Sleep",
     img: "s9OA2wW.png",
     opts: {
       album: ["sznz4"]
-	}
+    }
   }/*,
       {
     name: "Why Don't You Get Me",
