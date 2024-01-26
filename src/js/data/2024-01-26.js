@@ -1,4 +1,4 @@
-dataSetVersion = "2022-10-04"; // Change this when creating a new data set version. YYYY-MM-DD format.
+dataSetVersion = "2024-01-26"; // Change this when creating a new data set version. YYYY-MM-DD format.
 dataSet[dataSetVersion] = {};
 
 dataSet[dataSetVersion].options = [
@@ -1604,15 +1604,15 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       album: ["sznz1"]
     }
-  },/*
-      {
+  },
+  {
     name: "Across the Meadow",
     img: "s7HT4DQ.png",
     opts: {
       album: ["sznz1"],
       bside: true
     }
-  },*/
+  },
   {
     name: "Lawn Chair",
     img: "IBEfOwK.png",
@@ -1661,15 +1661,15 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       album: ["sznz2"]
     }
-  },/*
-      {
+  },
+  {
     name: "Portia",
     img: "IBEfOwK.png",
     opts: {
       album: ["sznz2"],
-	  bside: true
-	}
-  },*/
+      bside: true
+    }
+  },
   {
     name: "Can't Dance, Don't Ask Me",
     img: "6InreTr.png",
@@ -1718,15 +1718,15 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       album: ["sznz3"]
     }
-  },/*,
-      {
+  },
+  {
     name: "The Way I Hate You",
     img: "6InreTr.png",
     opts: {
       album: ["sznz3"],
-	  bside: true
-	}
-  }*/
+      bside: true
+    }
+  },
   {
     name: "I Want a Dog",
     img: "s9OA2wW.png",
@@ -1775,13 +1775,13 @@ dataSet[dataSetVersion].characterData = [
     opts: {
       album: ["sznz4"]
     }
-  }/*,
-      {
+  },
+  {
     name: "Why Don't You Get Me",
     img: "s9OA2wW.png",
     opts: {
       album: ["sznz4"],
-	  bside: true
-	}
-  }*/
+      bside: true
+    }
+  }
 ];
