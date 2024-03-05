@@ -31,7 +31,7 @@ Open an issue or pull request if you have any suggestions or find any bugs. If y
 ```
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
 
 ## Acknowledgements
 - [execfera](https://github.com/execfera) for the original sorter
