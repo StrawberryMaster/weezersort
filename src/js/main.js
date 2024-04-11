@@ -111,7 +111,7 @@ function init() {
   toggleOptions();
 
   /** Define keyboard controls (up/down/left/right vimlike k/j/h/l). */
-  document.addEventListener('keypress', (ev) => {
+  document.addEventListener('keydown', (ev) => {
     /** If sorting is in progress. */
     if (timestamp && !timeTaken && !loading && choices.length === battleNo - 1) {
       switch (ev.key) {
@@ -122,6 +122,10 @@ function init() {
         case 'j': case '2': case 'ArrowDown': undo(); break;
         default: break;
       }
+    }
+    /** Prevent scrolling with arrow keys, so no funny scrolling occurs. */
+    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(ev.key)) {
+      ev.preventDefault();
     }
     /** If sorting has ended. */
     else if (timeTaken && choices.length === battleNo - 1) {
