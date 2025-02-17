@@ -1,4 +1,4 @@
-dataSetVersion = "2024-01-26"; // Change this when creating a new data set version. YYYY-MM-DD format.
+dataSetVersion = "2025-02-17"; // Change this when creating a new data set version. YYYY-MM-DD format.
 dataSet[dataSetVersion] = {};
 
 dataSet[dataSetVersion].options = [
@@ -149,7 +149,7 @@ dataSet[dataSetVersion].characterData = [
     }
   },
   {
-    name: "Lullabye for Wayne",
+    name: "Lullaby for Wayne",
     img: "vsQ2XpQ.png",
     opts: {
       album: ["blue"],
@@ -158,6 +158,86 @@ dataSet[dataSetVersion].characterData = [
   },
   {
     name: "I Swear It's True",
+    img: "vsQ2XpQ.png",
+    opts: {
+      album: ["blue"],
+      bside: true
+    }
+  },
+  {
+    name: "Thief, You've Taken All That Was Me",
+    img: "vsQ2XpQ.png",
+    opts: {
+      album: ["blue"],
+      bside: true
+    }
+  },
+  {
+    name: "Let's Sew Our Pants Together",
+    img: "vsQ2XpQ.png",
+    opts: {
+      album: ["blue"],
+      bside: true
+    }
+  },
+  {
+    name: "I Can't Forget The Way",
+    img: "vsQ2XpQ.png",
+    opts: {
+      album: ["blue"],
+      bside: true
+    }
+  },
+  {
+    name: "Windows Down",
+    img: "vsQ2XpQ.png",
+    opts: {
+      album: ["blue"],
+      bside: true
+    }
+  },
+  {
+    name: "Superman",
+    img: "vsQ2XpQ.png",
+    opts: {
+      album: ["blue"],
+      bside: true
+    }
+  },
+  {
+    name: "Dawn Sets upon Us",
+    img: "vsQ2XpQ.png",
+    opts: {
+      album: ["blue"],
+      bside: true
+    }
+  },
+  {
+    name: "Windows Down",
+    img: "vsQ2XpQ.png",
+    opts: {
+      album: ["blue"],
+      bside: true
+    }
+  },
+  {
+    name: "Just What I Needed",
+    img: "vsQ2XpQ.png",
+    opts: {
+      album: ["blue"],
+      bside: true
+    }
+  },
+  {
+    name: "Conversationalist",
+    img: "vsQ2XpQ.png",
+    opts: {
+      album: ["blue"],
+      bside: true
+    }
+  },
+  {
+    name: "China Grove",
     img: "vsQ2XpQ.png",
     opts: {
       album: ["blue"],
