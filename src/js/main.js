@@ -57,56 +57,65 @@ let storedSaveType = localStorage.getItem(`${sorterURL}_saveType`);
 let optionsHidden = true;
 let darkMode = false;
 
-function toggleOptions() {
-  let options = document.querySelector('.options');
-  let toggleButton = document.querySelector('.toggleOptionsButton');
+const domCache = {};
+function $(selector) {
+  if (!domCache[selector]) domCache[selector] = document.querySelector(selector);
+  return domCache[selector];
+}
+function $all(selector) {
+  return Array.from(document.querySelectorAll(selector));
+}
 
+function toggleOptions() {
+  const optionsElem = $('.options');
+  const toggleButton = $('.toggleOptionsButton');
   if (optionsHidden) {
     toggleButton.innerHTML = 'Hide filters';
-    options.classList.remove('hidden');
-    options.classList.add('shown');
+    optionsElem.classList.remove('hidden');
+    optionsElem.classList.add('shown');
     optionsHidden = false;
   } else {
     toggleButton.innerHTML = 'Show filters';
-    options.classList.remove('shown');
-    options.classList.add('hidden');
+    optionsElem.classList.remove('shown');
+    optionsElem.classList.add('hidden');
     optionsHidden = true;
   }
 }
 
 function toggleDarkMode() {
-  let elementsToDarken = ['body', '.toggleOptionsButton', '.button', '.sort', '.progressbar', '.result', '.feedback', 'a', 'a:hover'];
-  elementsToDarken.forEach(element => document.querySelectorAll(element).forEach(e => e.classList.toggle("dark")))
+  const elementsToDarken = ['body', '.toggleOptionsButton', '.button', '.sort', '.progressbar', '.result', '.feedback', 'a', 'a:hover'];
+  elementsToDarken.forEach(element => $all(element).forEach(e => e.classList.toggle("dark")));
+  const feedback = $('.feedback');
   if (!darkMode) {
-    document.querySelector('.feedback').src = "./src/assets/darkmode.png";
+    feedback.src = "./src/assets/darkmode.png";
     darkMode = true;
   } else {
-    document.querySelector('.feedback').src = "./src/assets/lightmode.png";
+    feedback.src = "./src/assets/lightmode.png";
     darkMode = false;
   }
 }
 
 /** Initialize script. */
 function init() {
-  /** Define button behavior. */
-  document.querySelector('.starting.start.button').addEventListener('click', start);
-  document.querySelector('.starting.load.button').addEventListener('click', loadProgress);
+  /** Define button behavior. **/
+  $('.starting.start.button').addEventListener('click', start);
+  $('.starting.load.button').addEventListener('click', loadProgress);
 
-  document.querySelector('.toggleOptionsButton').addEventListener('click', toggleOptions);
-  document.querySelector('.feedback').addEventListener('click', toggleDarkMode);
+  $('.toggleOptionsButton').addEventListener('click', toggleOptions);
+  $('.feedback').addEventListener('click', toggleDarkMode);
 
-  document.querySelector('.left.sort.image').addEventListener('click', () => pick('left'));
-  document.querySelector('.right.sort.image').addEventListener('click', () => pick('right'));
+  $('.left.sort.image').addEventListener('click', () => pick('left'));
+  $('.right.sort.image').addEventListener('click', () => pick('right'));
 
-  document.querySelector('.sorting.tie.button').addEventListener('click', () => pick('tie'));
-  document.querySelector('.sorting.undo.button').addEventListener('click', undo);
-  document.querySelector('.sorting.save.button').addEventListener('click', () => saveProgress('Progress'));
+  $('.sorting.tie.button').addEventListener('click', () => pick('tie'));
+  $('.sorting.undo.button').addEventListener('click', undo);
+  $('.sorting.save.button').addEventListener('click', () => saveProgress('Progress'));
 
-  document.querySelector('.finished.save.button').addEventListener('click', () => saveProgress('Last Result'));
-  document.querySelector('.finished.getimg.button').addEventListener('click', generateImage);
-  document.querySelector('.finished.list.button').addEventListener('click', generateTextList);
+  $('.finished.save.button').addEventListener('click', () => saveProgress('Last Result'));
+  $('.finished.getimg.button').addEventListener('click', generateImage);
+  $('.finished.list.button').addEventListener('click', generateTextList);
 
-  document.querySelector('.clearsave').addEventListener('click', clearProgress);
+  $('.clearsave').addEventListener('click', clearProgress);
 
   toggleOptions();
 
@@ -885,8 +894,11 @@ function msToReadableTime(milliseconds) {
  * @param {number} width Width of desired width in px.
  */
 function reduceTextWidth(text, font, width) {
-  const canvas = reduceTextWidth.canvas || (reduceTextWidth.canvas = document.createElement("canvas"));
-  const context = canvas.getContext("2d");
+  if (!reduceTextWidth.canvas) {
+    reduceTextWidth.canvas = document.createElement("canvas");
+    reduceTextWidth.context = reduceTextWidth.canvas.getContext("2d");
+  }
+  const context = reduceTextWidth.context;
   context.font = font;
   if (context.measureText(text).width < width * 0.8) {
     return text;
@@ -899,4 +911,6 @@ function reduceTextWidth(text, font, width) {
   }
 }
 
-window.onload = init;
+(function() {
+  window.onload = init;
+})();
