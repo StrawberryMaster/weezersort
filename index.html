@@ -121,6 +121,14 @@
                 <p></p>
             </div>
         </div>
+
+        <script>
+            const pickDefaultImage = (pool) => pool[Math.floor(Math.random() * pool.length)];
+            document.querySelector('.left.sort.image').src =
+                pickDefaultImage(['src/assets/defaultL.png', 'src/assets/defaultL2.png']);
+            document.querySelector('.right.sort.image').src =
+                pickDefaultImage(['src/assets/defaultR.jpg', 'src/assets/defaultR2.png']);
+        </script>
         <button class="toggleOptionsButton">Show filters</button>
         <div class="options"></div>
         <div class="image selector">Display Images on Result: </div>
