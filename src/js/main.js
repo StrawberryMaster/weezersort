@@ -676,6 +676,17 @@ function clearProgress() {
 }
 
 function generateImage() {
+  if (!window.html2canvas) {
+    if (!document.querySelector('script[data-html2canvas]')) {
+      const script = document.createElement('script');
+      script.src = 'src/js/html2canvas.min.js';
+      script.dataset.html2canvas = 'true';
+      script.onload = generateImage;
+      document.head.appendChild(script);
+    }
+    return;
+  }
+
   const timeFinished = timestamp + timeTaken;
   const tzoffset = (new Date()).getTimezoneOffset() * 60000;
   const filename = 'sort-' + (new Date(timeFinished - tzoffset)).toISOString().slice(0, -5).replace('T', '(') + ').png';
@@ -911,13 +922,10 @@ async function preloadImages() {
   const imageCache = {}; // To cache loaded images
 
   const loadImageAndCache = async (char, idx) => {
-    if (imageCache[char.img]) {
-      characterDataToSort[idx].img = imageCache[char.img];
-    } else {
-      const imageData = await loadImage(/^https?:\/\//.test(char.img) ? char.img : imageRoot + char.img);
-      characterDataToSort[idx].img = imageData;
-      imageCache[char.img] = imageData; // Cache the image
+    if (!imageCache[char.img]) {
+      imageCache[char.img] = loadImage(/^https?:\/\//.test(char.img) ? char.img : imageRoot + char.img);
     }
+    characterDataToSort[idx].img = await imageCache[char.img];
   };
 
   // Load images concurrently
