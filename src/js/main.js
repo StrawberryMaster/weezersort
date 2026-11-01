@@ -914,7 +914,7 @@ async function preloadImages() {
     if (imageCache[char.img]) {
       characterDataToSort[idx].img = imageCache[char.img];
     } else {
-      const imageData = await loadImage(imageRoot + char.img);
+      const imageData = await loadImage(/^https?:\/\//.test(char.img) ? char.img : imageRoot + char.img);
       characterDataToSort[idx].img = imageData;
       imageCache[char.img] = imageData; // Cache the image
     }
