@@ -56,6 +56,8 @@ let storedSaveType = localStorage.getItem(`${sorterURL}_saveType`);
 
 let optionsHidden = true;
 let darkMode = false;
+let darkModeManual = false;   // set when the user picks a scheme manually
+const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
 const domCache = {};
 function $(selector) {
@@ -82,21 +84,43 @@ function toggleOptions() {
   }
 }
 
-function toggleDarkMode() {
+function setDarkMode(enabled) {
+  if (enabled === darkMode) { return; }
+  darkMode = enabled;
   const elementsToDarken = ['body', '.toggleOptionsButton', '.button', '.sort', '.progressbar', '.result', '.feedback', 'a', 'a:hover'];
-  elementsToDarken.forEach(element => $all(element).forEach(e => e.classList.toggle("dark")));
-  const feedback = $('.feedback');
-  if (!darkMode) {
-    feedback.src = "./src/assets/darkmode.png";
-    darkMode = true;
-  } else {
-    feedback.src = "./src/assets/lightmode.png";
-    darkMode = false;
+  elementsToDarken.forEach(element => $all(element).forEach(e => e.classList.toggle("dark", enabled)));
+  $('.feedback').src = enabled ? "./src/assets/darkmode.png" : "./src/assets/lightmode.png";
+}
+
+function toggleDarkMode() {
+  darkModeManual = true;
+  setDarkMode(!darkMode);
+  localStorage.setItem(`${sorterURL}_darkMode`, darkMode ? '1' : '0');
+}
+
+/**
+ * Applies dark mode on load
+ */
+function applyColorScheme() {
+  const storedMode = localStorage.getItem(`${sorterURL}_darkMode`);
+
+  if (storedMode === '1') { setDarkMode(true); return; }
+  if (storedMode === '0') { return; }
+
+  setDarkMode(darkModeQuery.matches);
+
+  const onSchemeChange = (ev) => { if (!darkModeManual) { setDarkMode(ev.matches); } };
+  if (darkModeQuery.addEventListener) {
+    darkModeQuery.addEventListener('change', onSchemeChange);
+  } else if (darkModeQuery.addListener) {   // older Safari
+    darkModeQuery.addListener(onSchemeChange);
   }
 }
 
 /** Initialize script. */
 function init() {
+  applyColorScheme();
+
   /** Define button behavior. **/
   $('.starting.start.button').addEventListener('click', start);
   $('.starting.load.button').addEventListener('click', loadProgress);
@@ -259,7 +283,7 @@ function start() {
     .map(a => a[1]);
 
   /**
-   * tiedDataList will keep a record of indexes on which characters are equal (i.e. tied) 
+   * tiedDataList will keep a record of indexes on which characters are equal (i.e. tied)
    * to another one. recordDataList will have an interim list of sorted elements during
    * the mergesort process.
    */
@@ -267,14 +291,14 @@ function start() {
   recordDataList = characterDataToSort.map(() => 0);
   tiedDataList = characterDataToSort.map(() => -1);
 
-  /** 
+  /**
    * Put a list of indexes that we'll be sorting into sortedIndexList. These will refer back
    * to characterDataToSort.
-   * 
+   *
    * Begin splitting each element into little arrays and spread them out over sortedIndexList
-   * increasing its length until it become arrays of length 1 and you can't split it anymore. 
-   * 
-   * parentIndexList indicates each element's parent (i.e. where it was split from), except 
+   * increasing its length until it become arrays of length 1 and you can't split it anymore.
+   *
+   * parentIndexList indicates each element's parent (i.e. where it was split from), except
    * for the first element, which has no parent.
    */
 
@@ -360,7 +384,7 @@ function display() {
 
 /**
  * Sort between two character choices or tie.
- * 
+ *
  * @param {'left'|'right'|'tie'} sortType
  */
 function pick(sortType) {
@@ -380,12 +404,12 @@ function pick(sortType) {
   sortedNoPrev = sortedNo;
   pointerPrev = pointer;
 
-  /** 
+  /**
    * For picking 'left' or 'right':
-   * 
+   *
    * Input the selected character's index into recordDataList. Increment the pointer of
    * recordDataList. Then, check if there are any ties with this character, and keep
-   * incrementing until we find no more ties. 
+   * incrementing until we find no more ties.
    */
   switch (sortType) {
     case 'left': {
@@ -405,9 +429,9 @@ function pick(sortType) {
       break;
     }
 
-    /** 
+    /**
      * For picking 'tie' (i.e. heretics):
-     * 
+     *
      * Proceed as if we picked the 'left' character. Then, we record the right character's
      * index value into the list of ties (at the left character's index) and then proceed
      * as if we picked the 'right' character.
@@ -429,7 +453,7 @@ function pick(sortType) {
   }
 
   /**
-   * Once we reach the limit of the 'right' character list, we 
+   * Once we reach the limit of the 'right' character list, we
    * insert all of the 'left' characters into the record, or vice versa.
    */
   const leftListLen = sortedIndexList[leftIndex].length;
@@ -446,9 +470,9 @@ function pick(sortType) {
   }
 
   /**
-   * Once we reach the end of both 'left' and 'right' character lists, we can remove 
+   * Once we reach the end of both 'left' and 'right' character lists, we can remove
    * the arrays from the initial mergesort array, since they are now recorded. This
-   * record is a sorted version of both lists, so we can replace their original 
+   * record is a sorted version of both lists, so we can replace their original
    * (unsorted) parent with a sorted version. Purge the record afterwards.
    */
   if (leftInnerIndex === leftListLen && rightInnerIndex === rightListLen) {
@@ -485,7 +509,7 @@ function pick(sortType) {
 
 /**
  * Records data in recordDataList.
- * 
+ *
  * @param {'left'|'right'} sortType Record from the left or the right character array.
  */
 function recordData(sortType) {
@@ -503,7 +527,7 @@ function recordData(sortType) {
 
 /**
  * Modifies the progress bar.
- * 
+ *
  * @param {string} indicator
  * @param {number} percentage
  */
@@ -515,7 +539,7 @@ function progressBar(indicator, percentage) {
 
 /**
  * Shows the result of the sorter.
- * 
+ *
  * @param {number} [imageNum=3] Number of images to display. Defaults to 3.
  */
 function result(imageNum = 3) {
@@ -537,7 +561,7 @@ function result(imageNum = 3) {
   else
     header = '<div class="result head"><div class="left">Order</div><div class="right">Name</div></div>';
 
-  const timeStr = `This sorter was completed on ${new Date(timestamp + timeTaken).toString()} and took ${msToReadableTime(timeTaken)}. <a href="${location.protocol}//${sorterURL}">Do another sorter?</a>`;
+  const timeStr = `This sorter was completed on ${new Date(timestamp + timeTaken).toString()} and took ${msToReadableTime(timeTaken)}. <a${darkMode ? ' class="dark"' : ''} href="${location.protocol}//${sorterURL}">Do another sorter?</a>`;
   const imgRes = (char, num) => {
     const charName = reduceTextWidth(char.name, 'Arial 12px', 160);
     const charTooltip = char.name !== charName ? char.name : '';
@@ -609,9 +633,9 @@ function undo() {
   display();
 }
 
-/** 
+/**
  * Save progress to local browser storage.
- * 
+ *
  * @param {'Autosave'|'Progress'|'Last Result'} saveType
 */
 function saveProgress(saveType) {
@@ -638,7 +662,7 @@ function loadProgress() {
   if (saveData) decodeQuery(saveData);
 }
 
-/** 
+/**
  * Clear progress from local browser storage.
 */
 function clearProgress() {
@@ -656,22 +680,63 @@ function generateImage() {
   const tzoffset = (new Date()).getTimezoneOffset() * 60000;
   const filename = 'sort-' + (new Date(timeFinished - tzoffset)).toISOString().slice(0, -5).replace('T', '(') + ').png';
 
-  html2canvas(document.querySelector('.results')).then(canvas => {
-    const dataURL = canvas.toDataURL();
+  html2canvas(document.querySelector('.results')).then(async canvas => {
     const imgButton = document.querySelector('.finished.getimg.button');
     const resetButton = document.createElement('a');
+    const addLineBreak = () => {
+      imgButton.appendChild(document.createElement('br'));
+      imgButton.appendChild(document.createElement('br'));
+    };
 
     imgButton.removeEventListener('click', generateImage);
     imgButton.innerHTML = '';
-    imgButton.insertAdjacentHTML('beforeend', `<a href="${dataURL}" download="${filename}">Download Image</a><br><br>`);
+
+    /**
+     * iOS ignores string/attribute-based downloads entirely, so it gets the
+     * native share sheet (which can save straight to Photos) plus an "Open
+     * Image" fallback
+     */
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const blob = await new Promise(resolve => canvas.toBlob(resolve));
+    const imageFile = blob ? new File([blob], filename, { type: 'image/png' }) : null;
+    const canShare = isIOS && imageFile && navigator.canShare && navigator.canShare({ files: [imageFile] });
+
+    if (canShare) {
+      const shareButton = document.createElement('a');
+      shareButton.textContent = 'Share Image';
+      shareButton.classList.toggle('dark', darkMode);
+      shareButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        navigator.share({ files: [imageFile], title: filename }).catch(() => {});
+      });
+      imgButton.appendChild(shareButton);
+      addLineBreak();
+    }
+
+    const downloadButton = document.createElement('a');
+    if (isIOS) {
+      // open the image in a tab, so it can be saved from there by long-pressing
+      downloadButton.href = URL.createObjectURL(blob);
+      downloadButton.target = '_blank';
+      downloadButton.textContent = 'Open image';
+    } else {
+      downloadButton.href = canvas.toDataURL();
+      downloadButton.download = filename;
+      downloadButton.textContent = 'Download image';
+    }
+    downloadButton.classList.toggle('dark', darkMode);
+    imgButton.appendChild(downloadButton);
+    addLineBreak();
 
     resetButton.insertAdjacentText('beforeend', 'Reset');
+    resetButton.classList.toggle('dark', darkMode);
     resetButton.addEventListener('click', (event) => {
+      if (downloadButton.protocol === 'blob:') { URL.revokeObjectURL(downloadButton.href); }
       imgButton.addEventListener('click', generateImage);
       imgButton.innerHTML = 'Generate Image';
       event.stopPropagation();
     });
-    imgButton.insertAdjacentElement('beforeend', resetButton);
+    imgButton.appendChild(resetButton);
   });
 }
 
@@ -753,8 +818,8 @@ function decodeQuery(queryString = window.location.search.slice(1)) {
   let successfulLoad;
 
   try {
-    /** 
-     * Retrieve data from compressed string. 
+    /**
+     * Retrieve data from compressed string.
      * @type {string[]}
      */
     const decoded = LZString.decompressFromEncodedURIComponent(queryString).split('|');
@@ -770,7 +835,7 @@ function decodeQuery(queryString = window.location.search.slice(1)) {
     const optDecoded = decoded.splice(0, 1)[0];
     const suboptDecoded = decoded.slice(0);
 
-    /** 
+    /**
      * Get latest data set version from before the timestamp.
      * If timestamp is before or after any of the datasets, get the closest one.
      * If timestamp is between any of the datasets, get the one in the past, but if timeError is set, get the one in the future.
@@ -823,7 +888,7 @@ function decodeQuery(queryString = window.location.search.slice(1)) {
   if (successfulLoad) { start(); }
 }
 
-/** 
+/**
  * Preloads images in the filtered character data and converts to base64 representation.
 */
 async function preloadImages() {
@@ -861,7 +926,7 @@ async function preloadImages() {
 
 /**
  * Returns a readable time string from milliseconds.
- * 
+ *
  * @param {number} milliseconds
  */
 function msToReadableTime(milliseconds) {
